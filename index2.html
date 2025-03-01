@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        body {
+        font-family: Arial, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        background-color: #121212;
+        color: white;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        }
+
+        /* Header */
+        header {
+        background-color: #121212;
+        padding: 20px;
+        font-size: 30px;
+        font-weight: bold;
+        width: 100%;
+        text-align: center;
+        }
+
+        header img {
+        width: 100%;
+        height: auto;
+        display: block;
+        }
+
+        /* Centered Content */
+        .container {
+        max-width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+        background: #121212;
+        border-radius: 10px;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+        }
+
+        h2 {
+        color: #FFD700;
+        }
+
+        /* Timetable */
+        .timetable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        }
+
+        .timetable th, .timetable td {
+        padding: 10px;
+        border: 1px solid white;
+        }
+
+        .timetable th {
+        background-color: #121212;
+        }
+
+        /* Image Slideshow */
+        .slideshow-container {
+        position: relative;
+        max-width: 90%;
+        margin: 20px auto;
+        }
+
+        .slide {
+        display: none;
+        width: 100%;
+        border-radius: 10px;
+        }
+
+        .active-slide {
+        display: block;
+        }
+
+        /* Navigation Buttons */
+        button {
+        background-color: #FFD700;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        }
+
+        button:hover {
+        background-color: #e6c300;
+        }
+
+        /* Stars Animation */
+        /* Pop-up Message */
+        /* Pop-up Message */
+
+
+
+        /* Stars Animation */
+
+
+        /* List Styling (Headings left, Data full-width & centered) */
+        dl {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        }
+
+        dt {
+        text-align: left;
+        font-weight: bold;
+        font-size: 22px;
+        width: 100%;
+        }
+
+        dd {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+        margin: 0;
+        font-size: 18px;
+        }
+
+        /* Centered Lists */
+        ul {
+        text-align: left;
+        margin: 0 auto;
+        max-width: 90%;
+        padding: 0;
+        row-gap: 70px;
+        }
+
+        a {
+        display: block;
+        text-align: center;
+        }
+
+        /* Video Section */
+        .video-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        width: 115%;
+        margin-top: 20px;
+        }
+
+        .video-container iframe {
+        width: 90%;
+        height: 250px;
+        }
+
+        /* Footer */
+        footer {
+        background-color: #121212;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        }
+        @media screen and (max-width: 800px) {
+            .video-container iframe {
+                height: 400px;
+            }
+        }
+        @media screen and (max-width: 1440px) {
+            .video-container iframe {
+                height: 1000px;
+            }
+        }
+
+        /* Responsive Adjustments */
+        @media screen and (max-width: 480px) {
+        header {
+            font-size: 24px;
+            padding: 15px;
+        }
+        .container {
+            max-width: 95%;
+            font-size: 20px;
+        }
+        .timetable th, .timetable td {
+            padding: 8px;
+            font-size: 14px;
+        }
+        button {
+            font-size: 16px;
+            padding: 8px 16px;
+        }
+        .video-container iframe {
+            height: 200px;
+        }
+        dl {
+            gap: 10px;
+        }
+        dt {
+            width: 100%;
+            text-align: left;
+            font-size: 20px;
+        }
+        dd {
+            width: 110%;
+            text-align: center;
+            font-size: 19px;
+        }
+        }
+        p{
+        width: 100%;
+        text-align: center;
+        row-gap: 70%;
+        }
+        .watermark {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 1000;
+        transition: opacity 0.3s ease-in-out;
+        }
+
+        .watermark:hover {
+        opacity: 1;
+        color: #FFD700; /* Gold color on hover */
+        }
+
+        .watermark a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+        }
+        /* 🎇 Fireworks Container */
+        .fireworks-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 1000vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        overflow: hidden;
+        }
+
+        /* 🎆 Firework Effect */
+        .firework {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background-color: transparent;
+        }
+
+        /* 🌈 Colorful Fireworks Sparks */
+        .spark {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        animation: explode 1.5s ease-out forwards, fadeOut 2s ease-out forwards;
+        }
+
+        /* ✨ Multi-Colored Sparks */
+        .spark:nth-child(1) { background: red; box-shadow: 0 0 10px red; }
+        .spark:nth-child(2) { background: orange; box-shadow: 0 0 10px orange; }
+        .spark:nth-child(3) { background: yellow; box-shadow: 0 0 10px yellow; }
+        .spark:nth-child(4) { background: green; box-shadow: 0 0 10px green; }
+        .spark:nth-child(5) { background: blue; box-shadow: 0 0 10px blue; }
+        .spark:nth-child(6) { background: purple; box-shadow: 0 0 10px purple; }
+        .spark:nth-child(7) { background: pink; box-shadow: 0 0 10px pink; }
+        .spark:nth-child(8) { background: cyan; box-shadow: 0 0 10px cyan; }
+        .spark:nth-child(9) { background: white; box-shadow: 0 0 10px white; }
+        .spark:nth-child(10) { background: gold; box-shadow: 0 0 10px gold; }
+
+        /* 🎇 Firework Explosion Animation */
+        @keyframes explode {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { 
+            transform: translate(calc(100px * cos(var(--angle))), calc(100px * sin(var(--angle)))) scale(0.3);
+            opacity: 0;
+        }
+        }
+
+        /* 🎇 Firework Fade Out */
+        @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+        }
+
+        /* ⭐ Golden Falling Stars */
+        .star {
+        position: absolute;
+        width: 7px;
+        height: 5px;
+        background-color: gold;
+        border-radius: 50%;
+        box-shadow: 0 0 8px gold;
+        animation: fall 6s linear forwards, fadeOutStar 3s linear forwards 3s;
+        opacity: 0;
+        }
+
+        /* 🌟 Falling Stars Animation */
+        @keyframes fall {
+        0% { transform: translateY(-50vh); opacity: 1; }
+        100% { transform: translateY(100vh); opacity: 1; }
+        }
+
+        /* ⭐ Fade Out Stars While Falling */
+        @keyframes fadeOutStar {
+        from { opacity: 1; }
+        to { opacity: 0; }
+        }
+
+        /* ✨ Twinkling Effect */
+        @keyframes twinkle {
+        0% { opacity: 0.6; }
+        100% { opacity: 1; }
+        }
+        .logo{
+            height: 80px;
+            width: 80px;
+        }
+        .card{
+            background-color: transparent;
+            border-radius: 10px;
+            color: white;
+            padding: 10px;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="https://cdn.dnaindia.com/sites/default/files/2024/03/10/2628401-untitled-design-2024-03-10t211939.236.jpg?im=FitAndFill=(1000,800)" alt="Ramadan Mubarak">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav text-white ml-auto">
+            <a class="nav-link text-white active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link text-white" href="hadith-file.pdf">Hadiths</a>
+            <a class="nav-link text-white" href="essentialsOf-Ramadhan.pdf">Essentials</a>
+            <a class="nav-link text-white" href="JustDuas-Updated.pdf">Duas</a>
+            <a class="nav-link text-white" href="dhikr-book.pdf">Dhikr</a>
+          </div>
+        </div>
+    </nav>
+    <header>
+        <h2>Ramadan Schedule</h2><br>
+        <p>"Ramadan is not just about fasting.It's about purifying the soul and seeking closeness to Allah"</p>
+        
+    </header>
+        <div class="container">
+            <h2>Tasks to do</h2>
+            <p><strong> "Ramadan is a month of immense blessings, where even the smallest  good deed is rewarded manyfold"</strong></p>
+            <ul >
+                <li>Quran Recitation</li> 
+                <li>Dua & zikr</li>
+                <li>Learning and understanding 2 hadiths from Sahih Bukhari Daily</li>
+                <li>Taraweeh(8 or 20)</li>
+                <li>Fastings</li>
+                <Li>Namaaz 5 times + Salat ut taubah before sleeping two rakat + Tahajjud</Li>
+            </ul>
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3 card">
+                        
+                        <dl>
+                            <h2><dt><strong>1.Quran Recitation</strong></dt></h2>
+                            <dd>30 chapters for 30 days complete a chapter in a day by reading it in before and after 5 salah's</dd>
+                        </dl>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 card">
+                        <dl>   
+                            <h2><dt><strong>2.Dua & zikr</strong></dt></h2>
+                            <dd>Include these duas in your dua 
+                            <p><li><strong>Rabbana Aathiq Riqhabana Minan Naar </strong>(Meaning: "O Allah free our necks from hell fire")</li></p>
+                            <p><li><strong>Allahumma Ballighni Lailatul Qadr</strong> (Meaning: "O Allah, bless us throughout this month of ramadan and let us reach the night of decree(lailatul qadr))</li></p>
+                            <p><li><strong>Rabbana Taqabbal Minna innaka Antas Samee'ul Aleem</strong> (Meaning: "O Allah, accept [this] from us indeed you are the Hearing, the Knowing)</li></p></dd>
+                        </dl>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 card"> 
+                        <dl>
+                            <h2><dt><strong>3.Hadith Learning</strong></dt></h2>
+                            <dd>Checkout below images for daily 2 hadiths</dd>
+                        </dl>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 card">
+                        <dl>
+                            <h2><dt><strong>4.Taraweeh</strong></dt></h2>
+                            <dd>Taraweeh is a Sunnah prayer that is performed at night during Ramadan. 
+                                <li>Women can pray Taraweeh at home or at the mosque. </li>
+                                <li>How to pray Taraweeh </li>
+                                Perform the Fardh and Sunnah of Isha prayer
+                                Set the intention to pray Taraweeh
+                                Pray the first four rakats of Taraweeh in sets of two rakats
+                                Take a short break after each set of four rakats
+                                Repeat the process until you reach the desired number of rakats
+                                End with the Witr prayer</dd>   
+                        </dl>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h2>Hadith collection of 60 (2 per day)</h2>
+        <img id="myHadiths" src="https://dcok7u9o4gc10.cloudfront.net/uploads/ckeditor/pictures/2071/content_104296018_1700743713424117_2648453196977296247_o.jpg" width="290" height="450" alt="thumbnail">
+    
+    <br>
+    
+    <button onclick="prevImage()">Previous</button>
+    <button onclick="nextImage()">Next</button>
+    
+    <script>
+        const images = [
+            "https://dcok7u9o4gc10.cloudfront.net/uploads/ckeditor/pictures/2071/content_104296018_1700743713424117_2648453196977296247_o.jpg", // Thumbnail (First Image)
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsTEbwPtoXBWuTRV_H-_dN0vSlDECSfAhJDw&s", // First Hadith
+            "https://i.pinimg.com/736x/42/41/77/42417741610c7c81ee9ac6539fbd7d14.jpg", // Second Hadith // Third Hadith
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfBzRB5yom-MTHtz-cnYrezSfRmZhBSrX4jHJCRdgNYP4sixJm51I7MsYbJ16sev2x0-8&usqp=CAU",
+            "https://pbs.twimg.com/media/FCZQCbsVkAgfUFB.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAvDMO2KnCesmrmKY2Myxncrmae06Zkuj1vcGSvdR08vo73FJsldGd9Jz_x1FJ6M-du-s&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKj_gEOSlYEnzsO3XacTCUad6_FkwMyV4r_Jh8ABtLUqoZXGF0nhe1kxNrSS15_4CiXls&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyiiG1bdzV9BMk9QJ2gTLp4aQDGZT1lOMxWLDLUF90RhHbq26he2vxSMJpQovbbjqGMoM&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb9fG8Tn3CYX9fczid2lquRDaGzZNt_Xqb36MHcHAM9LONS_alNUZmRa6bGq9iDscLieA&usqp=CAU",
+            "https://preview.redd.it/best-forgiveness-dua-v0-6iansr5j6ysd1.png?width=1080&crop=smart&auto=webp&s=8c835943d30c94c364386be768983df7c4e04aeb",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnsXtsGQzpqkQmJUWAV_WXIHpJG3DcxOWkD0DwsdyAKZYJuI2BxG8FOTlfP47HOvuQ8SM&usqp=CAU",
+            "https://almeiraj.com/wp-content/uploads/2024/12/15-1-1024x1024.png.webp",
+            "https://i.pinimg.com/564x/85/86/a5/8586a5bb78637b5fba91c55526e607e7.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYbhEDjk10JoXcTKYEwPpnyNAWaTfip3AI9dk4YlYe19TYYxoUtN2szo_8ni8dNHHnNRo&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlnaISampHxb-4b_BfTzkkpmsxgbzuQTOi164E6eDfjPcq3qaIzUzDQxv04bAM28KUZmk&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRilLcney0yN7fMpfH74T59sj7bAj1_LV_Cy3DyclXI50_q4V7VG8FQVB3gSttOh3bfy10&usqp=CAU",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW3G9bTyN-UZ8Mzu4d__gZyGk7_1UxKUBSAw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIQ5-KiBF3ovLD3H3Qa3hnHyMkl7yPu2bdyA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HbWmZW84aerW5IYDDo1j7g8LQ2UXAzA_gg&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgpB_2FDwvCkuy9TdA8xGdLlZ4rMiGof6Y2w&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnGUqDbLhoWrxcaBp9_TWDu7QzTIP9ci9mGg&s",
+            "https://live.staticflickr.com/3727/11965223726_2572b7894d_z.jpg",
+            "https://i.pinimg.com/736x/20/d6/b4/20d6b4bee16cd6fc1d3851d484f5df62.jpg",
+            "https://pbs.twimg.com/media/Fffr1sJXEAAeafL.jpg",
+            "https://miro.medium.com/v2/resize:fit:1200/1*pDs3qCviSQDGuFr9iXyCUw.png",
+            "https://i.pinimg.com/736x/a5/78/b9/a578b9986f86114f15477c8399a36ae9.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOSYkJGfbtl8-F1fbDk_uFNUUPIhRtF5pwuw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_rkcoCcTtjeoq-23bvxOHTAFxTWyRyo0l4Q&s",
+            "https://i.pinimg.com/736x/a1/8c/e5/a18ce56dd75b6030d613737d941216d3.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKCcdTwqZC_tHwkasoqFpfwWjP9657qCes4w&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkamh7xalw1h3hxFqcxKzpIQz82we_qRDqDg&s",
+            "https://i.pinimg.com/736x/c5/e0/63/c5e063e55454c14014b96a90288607bd.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZLuW9Yr6h02veK32_ixwc80fQDbpwKrNhWQ&s",
+            "https://pbs.twimg.com/media/E-v-VIOXsAEjJM_.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwqj91ZYBIGh7okwp5AUpIymV84u4pm9Rb8Q&s",
+            "https://i.pinimg.com/736x/17/64/0c/17640ca86aa69b278ba6a97e80ebfe52.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDiPBdoET70MMzKuJbgUeE7k7NcmrJRgl1UQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6oY9s3JeBrkJLdXACx2GC39KsuAO2Sc6fWw&s",
+            "https://i.pinimg.com/736x/a5/5b/27/a55b277d4d48926e68de06358c32b007.jpg",
+            "https://i.pinimg.com/736x/b1/2b/c6/b12bc6d2c2a6f9af5e2b938fe667f0eb.jpg",
+            "https://www.salafisounds.com/wp-content/uploads/2018/04/Hasan.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH7qE1T8uMGd1RikladB6TMV2hS_281iNyiw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST_0XciKV6WctJbqbQCpiPmS2Ya47UyS_25g&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz42AbbAVQcA9l221QscFEj44jqIk3CiOrKg&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDc3ri2J6VypnpERGb_MYd5r6o8aduzmyfHQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtJzb82G5OOhDCK_vtvZXsX6eKzgoBDfxWaw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjBpJW2zZoskLe-qr5H2G2opsRV9NmpwsxOg&s",
+            "https://pbs.twimg.com/media/ERiliswXsAIB_W1.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn6sUAFkE9RPL_5Qw36_XbIUiRBK99iF3tCQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4BkxH53B6666ZjxHvPNFf2t8GpKDu2llpxw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqw9nPWl-B3X9N3pGHxE0kLFBaV__HQs6W9Q&s0",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR8lpsB-x4NvFSZik0rYAEBvkKPo5wte2Xgw&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF0eoMj4ZpL4NoR7Yx79bGvTK2NthzaWZhGg&s",
+            "https://pbs.twimg.com/media/Fv1UtCdWYAAP1CE.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfgQjMEmndLuFfM-njB1-2Bl0jQ6ZCRAeUHA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnjTgsPSkb6JHoWKBliLpvTNt05-lMzoAzEA&s",
+            "https://64.media.tumblr.com/f7c7e8ab293a4cb91af03b13466840c6/tumblr_nk6fwiIWvp1rzot0eo1_540.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv7QE0B34aTr0ruVi2tHoapBZA9SdkDMEAzQ&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1VnUXjC_peM6z7P4dv591hMqyZysceqxyOw&s",
+            "https://i.pinimg.com/236x/4d/4e/4f/4d4e4fe0d8bfe564d9b2292f402bf03f.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ510i7H_eg5EifyaILe5AOHiL9PD2IoRxThg&s",
+        ];
+        
+        let currentIndex = 0; // Track the current image index
+    
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length; // Loop to the first image if at the last one
+            document.getElementById('myHadiths').src = images[currentIndex];
+        }
+    
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length; // Loop to the last image if at the first one
+            document.getElementById('myHadiths').src = images[currentIndex];
+        }
+    </script>
+    <button onclick="window.open('hadith-file.pdf')">Open PDF</button><br>
+    
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h2>Essentials of Ramadan</h2>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgRpDel4cZcP9Ac8nWHICFq-Y7qxK3vWBlZw&sim=FitAndFill=(200,700)" width="290" height="450" alt="Ramadan Mubarak"><br>
+                        <button onclick="window.open('essentialsOf-Ramadhan.pdf')">Essentials of Ramadan</button><br>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h2>Dua's</h2>
+                        <img src="https://cdn.slidesharecdn.com/ss_thumbnails/duabookwatermarked-141027040117-conversion-gate01-thumbnail.jpg?width=200&height=300&fit=boundsim=FitAndFill=(40,20)" width="290" height="450" ><br>
+                        <button onclick="window.open('JustDuas-Updated.pdf')">Book of Dua's</button><br>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <h2>Dhikr</h2>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTMBIXJ6RZs0uWcvFXIumNmYuo21AIi873Gw&sim=FitAndFill=(900,700)" width="290" height="450"><br>
+                        <button onclick="window.open('dhikr-book.pdf')">Dhikr Book</button><br>
+                    </div>
+                </div><br>
+    
+    
+    
+    
+    <h2 style="margin-top: 10px;"><strong>Here Are Some Lectures To Watch </strong></h2><br>
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" 
+                            src="https://www.youtube.com/embed/Vumwi8r_fh0?si=oKt4rQPXzjKgHMIv" 
+                            frameborder="0" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/9a5Jwy7lSfo?si=9_jTEiLX8Azn-35G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WCB1tYCvGB4?si=lAQBhPjozebuS4LY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/2hzHQrv5R4w?si=TH3qMFmYyc9Q7E-F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WEjOnQ079c4?si=riIf_QFpdiJZ85pE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/8GxuNikGQ1k?si=IElPmRCOVjLnaPjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/zIw5sJlnjcM?si=3Ao34kCEfi4lpVUl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/i26YtqDrSLc?si=-Ks9Px85nmq_Rc0D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/r-k9zDpKZCg?si=5F_RipWUcLnb_uAz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/jqwVJxQsNxU?si=aILVQamiH6vLHb9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+        
+        <footer>
+            <p>&copy; 2025 Ramadan Planner | All Rights Reserved</p>
+        </footer>
+        <div class="watermark">
+            <a href="https://www.instagram.com/halaalpath?igsh=MW8yZWE4YmJvZmxvaA==" target="_blank">@Halaalpath</a>
+        </div>
+        
+    <script>
+        alert("Assalamualaikum Welcome To Ramadan Planner By Halaalpath");
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const fireworkSound = new Audio("fireworks.mp3");
+        fireworkSound.volume = 0.1;
+
+        document.body.addEventListener("click", () => {
+            fireworkSound.play().catch(error => console.log("Audio playback failed:", error));
+            
+            setTimeout(startFireworks, 100); // Fireworks start slightly after sound
+        }, { once: true });
+        function startFireworks() {
+    const fireworksContainer = document.createElement("div");
+    fireworksContainer.classList.add("fireworks-container");
+    document.body.appendChild(fireworksContainer);
+
+    function createFirework(x, y, delay) {
+        setTimeout(() => {
+            let firework = document.createElement("div");
+            firework.classList.add("firework");
+            firework.style.left = `${x}px`;
+            firework.style.top = `${y}px`;
+
+            for (let i = 0; i < 20; i++) {
+                let spark = document.createElement("div");
+                spark.classList.add("spark");
+                let angle = (i / 20) * 360;
+                let sparkDelay = Math.random() * 0.5;
+                spark.style.setProperty("--angle", `${angle}deg`);
+                spark.style.setProperty("--delay", `${sparkDelay}s`);
+                firework.appendChild(spark);
+            }
+            fireworksContainer.appendChild(firework);
+
+            setTimeout(() => firework.remove(), 2000);
+        }, delay);
+    }
+
+    let fireworkInterval = setInterval(() => {
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * (window.innerHeight * 0.7);
+        createFirework(x, y, 0);
+    }, 2000);
+
+    setTimeout(() => clearInterval(fireworkInterval), 36000);
+
+    // Start falling stars after fireworks
+    setTimeout(startStarsAnimation, 36000);
+}
+
+function startStarsAnimation() {
+    const numStars = 600;
+    let stars = [];
+
+    for (let i = 0; i < numStars; i++) {
+        let star = document.createElement("div");
+        star.classList.add("star");
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `-5vh`;
+        star.style.animationDuration = `${3 + Math.random() * 3}s`;
+        star.style.animationDelay = `${Math.random() * 2}s`;
+
+        document.body.appendChild(star);
+        stars.push(star);
+    }
+
+    // Remove stars after animation completes (they fade out naturally)
+    setTimeout(() => {
+        stars.forEach(star => star.remove());
+    }, 8000);
+}
+});
+
+    </script>
+</body>
+</html>
